@@ -1,7 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const intialState ={
-    allTodos: <any>["This is the data"]
+interface Todo {
+    id: string;
+    todo: string;
+}
+
+interface TodoState{
+    allTodos: Todo[]
+
+}
+
+const intialState : TodoState ={
+    allTodos: [{id: '1', todo: 'This is a sample todo'}]
 }
 
 const todoSlice = createSlice({
