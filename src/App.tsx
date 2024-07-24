@@ -8,8 +8,9 @@ import { Dispatch } from '@reduxjs/toolkit'
 
 function App() {
   const {allTodos} = useSelector((state: any) => state.todos)
+  const {data} = useSelector((state: any) => state.async)
   const dispatch: Dispatch<any> = useDispatch()
-  console.log("This is the data",allTodos)
+  console.log("This is the data",allTodos, data)
   const [todo, setTodo] = useState('')
 
   const handleAddTodo = () => {
@@ -20,8 +21,8 @@ function App() {
 
   useEffect(() => {
     // Fetch todos on component mount
-    const data = dispatch(fetchUsers());
-    console.log("--", data)
+    // We need to dispatch the fetchUsers action creator beacuse this populates for the useSelector to get the data
+    dispatch(fetchUsers());
   }, [dispatch]);
 
   return (
